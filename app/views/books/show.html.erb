@@ -1,0 +1,21 @@
+  <h1>Book detail</h1>
+   <table>
+      <thead>
+          <tr>
+              <th colspan = "5"></th>
+              <th >
+          </tr>
+      </thead>
+
+      <tbody>
+          <tr>
+              <td><%= image_tag "sample-author1.jpg"%>
+                <p><%= @book.user.name %></p>
+              </td>
+              <td><%= @book.title %></td>
+              <td><%= @book.opinion %></td>
+              <td></td>
+              <td></td>
+          </tr>
+      </tbody>
+    </table>
