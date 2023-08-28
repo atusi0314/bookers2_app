@@ -1,4 +1,6 @@
-  <h1>Book detail</h1>
+<%= flash[:notice] %>
+ <%= render "newbook", user: @user, book: @books %>
+ <h1>Book detail</h1>
    <table>
       <thead>
           <tr>
@@ -9,13 +11,25 @@
 
       <tbody>
           <tr>
-              <td><%= image_tag "sample-author1.jpg"%>
-                <p><%= @book.user.name %></p>
+              <td><%= image_tag @book.user.get_profile_image(100,100) %>
+                <p>
+                  <%= link_to user_path(@user.id) do %>
+                    <%= @book.user.name %>
+                  <% end %>
+                </p>
               </td>
               <td><%= @book.title %></td>
-              <td><%= @book.opinion %></td>
-              <td></td>
-              <td></td>
+              <td><%= @book.body %></td>
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "Edit", edit_book_path(@book) %>
+                <% end %>
+              </td>
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", book_path(@book), method: :delete %>
+                <% end %>
+              </td>
           </tr>
       </tbody>
     </table>

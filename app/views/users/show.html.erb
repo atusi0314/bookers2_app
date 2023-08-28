@@ -1,0 +1,31 @@
+<%= render "books/newbook", user: @user, book: @book %>
+
+<div>
+    <h1>Books</h1>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Title</th>
+                <th>Opinion</th>
+            </tr>
+        </thead>
+     <% @books.each do |book| %>
+        <tbody>
+            <tr>
+                <td>
+                  <%= link_to user_path(current_user) do  %>
+                    <%= image_tag @user.get_profile_image(80,80) %>
+                  <% end %>
+                </td>
+                <td>
+                    <%= link_to book_path(book.id) do %>
+                     <%= book.title %>
+                    <% end %>
+                    </td>
+                <td><%= book.body %></td>
+            </tr>
+        </tbody>
+     <% end %>
+    </table>
+</div>
